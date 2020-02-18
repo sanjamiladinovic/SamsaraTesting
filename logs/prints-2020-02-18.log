@@ -1,0 +1,5 @@
+16:29:00.042 [main] INFO  samsara.TestRegistratingNewAccount - Logged in: Samsara
+16:29:00.042 [main] INFO  samsara.TestRegistratingNewAccount - Logged in: Samsara
+16:29:01.220 [main] FATAL samsara.TestRegistratingNewAccount - SubmitButton is disabled.
+16:29:01.220 [main] FATAL samsara.TestRegistratingNewAccount - SubmitButton is disabled.
+16:29:01.221 [main] INFO  samsara.TestRegistratingNewAccount - -------------------------------------------------------------------------------------------------------
