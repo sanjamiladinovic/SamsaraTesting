@@ -1,0 +1,5 @@
+13:20:54.670 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Text title Login in up right corner is wrong!
+13:20:54.775 [main] ERROR samsara.testImageAndTextOnResetPasswordPage - Question title is wrong.
+13:20:54.776 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - -------------------------------------------------------------------------------------------------------
+13:21:25.495 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Driver is initialised.
+13:21:46.135 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Logged in: Samsara

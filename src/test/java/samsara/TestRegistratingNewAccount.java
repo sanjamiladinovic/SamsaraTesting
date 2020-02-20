@@ -50,9 +50,51 @@ public class TestRegistratingNewAccount extends BaseClassSamsara {
 			System.out.println(newAccountPageObjects.registrationFieldCodeMessage().getText());
 			log.info("Warning message - Registration code failed.");
 		}
-		
-		
 
+	}
+	@Test
+	public void backToLoginPageViaSamsaraLinkOnCreateAccount() throws InterruptedException {
+		driver.get(prop.getProperty("url"));
+		log.info("Logged in: " + driver.getTitle());
+		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
+		loginPageSamsara.createAccountLink().click();
+
+		NewAccountPageObjects newAccountPageObjects = new NewAccountPageObjects(driver);
+
+		Assert.assertEquals(newAccountPageObjects.accountLandingPageMessage().getText(), "Register new account.");
+
+		newAccountPageObjects.samsaraLinkBack().click();
+		if(loginPageSamsara.usernameField().isDisplayed()) {
+			log.debug("Link Samsara on page for Account Creation(via link from loginpage) works");
+			System.out.println("Vraceno preko Samsara na Login stranu");
+		}
+		else
+			log.error("Link Samsara on page for Account Creation(via link from loginpage) doesn't works");
+		
+		
+		
+	}
+	@Test
+	public void backOnLoginPageViaLoginButtonFromAreateAccount() throws InterruptedException {
+		driver.get(prop.getProperty("url"));
+		log.info("Logged in: " + driver.getTitle());
+		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
+		loginPageSamsara.createAccountLink().click();
+
+		NewAccountPageObjects newAccountPageObjects = new NewAccountPageObjects(driver);
+
+		Assert.assertEquals(newAccountPageObjects.accountLandingPageMessage().getText(), "Resister new account.");
+
+		newAccountPageObjects.loginButtonBack().click();
+		if(loginPageSamsara.usernameField().isDisplayed()) {
+			log.debug("Link LoginButton on page for Account Creation(right in header) works");
+			System.out.println("Vraceno preko LoginButton-a na Login stranu");
+		}
+		else
+			log.error("Link LoginButton on page for Account Creation(right in header) doesn't works");
+		
+		
+		
 	}
 
 	@DataProvider
@@ -88,12 +130,11 @@ public class TestRegistratingNewAccount extends BaseClassSamsara {
 		newAccountPageObjects.secretAnswerField().sendKeys(secretAnswer);
 		newAccountPageObjects.passwordField().sendKeys(password);
 		newAccountPageObjects.rePasswordField().sendKeys(rePassword);
-		
-		if(newAccountPageObjects.signUpButton().isEnabled()) {
-			System.out.println("Button SignUp is: "+ newAccountPageObjects.signUpButton().isEnabled());
+
+		if (newAccountPageObjects.signUpButton().isEnabled()) {
+			System.out.println("Button SignUp is: " + newAccountPageObjects.signUpButton().isEnabled());
 			newAccountPageObjects.signUpButton().click();
-		}
-		else {
+		} else {
 			log.fatal("SubmitButton is disabled.");
 		}
 	}

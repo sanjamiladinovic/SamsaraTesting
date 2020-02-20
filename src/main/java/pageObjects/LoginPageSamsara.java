@@ -16,15 +16,15 @@ public class LoginPageSamsara {
 	By password = By.id("password");
 	By loginButton = By.xpath("//input[@type='submit']");
 	By createAccount = By.linkText("Create account");
-	By resetPassword = By.linkText("reset password");
+	//By resetPassword = By.linkText("reset password");
 	By loginOption = By.xpath("//a[contains(text(),'Log In')]");
 	By navBarBrand = By.cssSelector(".navbar-brand");
 	By loginMessage = By.xpath("//div[@class='alert alert-danger']");
 	By image = By.xpath("//div[@class='iconmelon']");
+	By linkResetPassword = By.cssSelector("form[id='form'] div:nth-child(4) a:nth-child(2)");
 
 	public LoginPageSamsara(WebDriver driver) {
 		// TODO Auto-generated constructor stub
-		
 
 		this.driver = driver;
 
@@ -52,10 +52,10 @@ public class LoginPageSamsara {
 		return driver.findElement(createAccount);
 	}
 
-	public WebElement resetPasswordLink() {
-
-		return driver.findElement(resetPassword);
-	}
+//	public WebElement resetPasswordLink() {
+//
+//		return driver.findElement(resetPassword);
+//	}
 
 	public WebElement loginOption() {
 
@@ -66,14 +66,19 @@ public class LoginPageSamsara {
 
 		return driver.findElement(loginOption);
 	}
-	
+
 	public WebElement loginWarnMessage() {
-		
+
 		return driver.findElement(loginMessage);
 	}
+
 	public WebElement loginImage() {
 
 		return driver.findElement(image);
+	}
+	public WebElement resetPasswordLink() {
+
+		return driver.findElement(linkResetPassword);
 	}
 
 }

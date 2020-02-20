@@ -66,6 +66,15 @@ public class TestLoginPageSamsara extends BaseClassSamsara {
 
 	}
 
+	@Test
+	public void resetPassword() {
+		driver.get(prop.getProperty("url"));
+		log.info("Logged in: " + driver.getTitle());
+		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
+		loginPageSamsara.resetPasswordLink().click();
+
+	}
+
 	@AfterMethod
 	public void closeTheBrowser() {
 		log.info(

@@ -28,7 +28,8 @@ public class NewAccountPageObjects {
 	By rePasswordField = By.id("repassword");
 	By passwordMatchingMessage = By.id("repasswordMessage");
 	By signUpButton = By.id("submitButton");
-
+	By samsaraLinkBack = By.cssSelector(".navbar-brand");
+	By loginLinkBack = By.cssSelector(".navbar-brand");
 	public WebElement accountLandingPageMessage() {
 		return driver.findElement(accounPageMessage);
 	}
@@ -85,4 +86,10 @@ public class NewAccountPageObjects {
 		return driver.findElement(signUpButton);
 	}
 
+	public WebElement samsaraLinkBack() {
+		return driver.findElement(samsaraLinkBack);
+	}
+	public WebElement loginButtonBack() {
+		return driver.findElement(loginLinkBack);
+	}
 }

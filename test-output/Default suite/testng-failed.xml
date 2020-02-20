@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="samsara.TestRegistratingNewAccount">
+      <class name="samsara.testImageAndTextOnResetPasswordPage">
         <methods>
           <include name="initialize"/>
-          <include name="testLoginPositiveCases" invocation-numbers="0"/>
+          <include name="checkText"/>
           <include name="closeTheBrowser"/>
         </methods>
-      </class> <!-- samsara.TestRegistratingNewAccount -->
+      </class> <!-- samsara.testImageAndTextOnResetPasswordPage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
