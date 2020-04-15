@@ -10,7 +10,7 @@ public class LoginPageSamsara {
 
 	public WebDriver driver;
 
-	// Lokatori
+	// Locirani WebElementi
 
 	By username = By.id("username");
 	By password = By.id("password");
@@ -30,7 +30,7 @@ public class LoginPageSamsara {
 
 	}
 
-	// WebElementi
+	// WebElementi metode
 
 	public WebElement usernameField() {
 

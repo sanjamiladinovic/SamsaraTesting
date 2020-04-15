@@ -1,0 +1,6 @@
+09:11:58.988 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Immage is displayed.
+09:54:41.041 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Driver is initialised.
+09:54:54.182 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Logged in: Samsara
+09:54:54.519 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Samsara text title is good.
+09:54:54.558 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Reset Password page text title is good.
+09:54:54.601 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Text title Login in up right corner is good.

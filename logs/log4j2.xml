@@ -24,6 +24,10 @@
 
 			<AppenderRef ref="File" />
 		</Logger>
+		<Logger name="samsara.TestAlgorithmsPage" level="trace" adittivity="false">
+
+			<AppenderRef ref="File" />
+		</Logger>
 		<Logger name="samsara.TestRegistratingNewAccount" level="trace" adittivity="false">
 
 			<AppenderRef ref="File" />

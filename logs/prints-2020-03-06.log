@@ -1,0 +1,6 @@
+09:54:54.642 [main] ERROR samsara.testImageAndTextOnResetPasswordPage - Question title is wrong!
+09:54:54.745 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Immage is displayed.
+16:14:06.644 [main] INFO  samsara.TestLoginPageSamsara - Primes su: [2, 3, 5, 7, 11, 13]
+16:14:08.803 [main] INFO  samsara.TestLoginPageSamsara - Primes su: [2, 3, 5, 7, 11, 13, 17]
+16:14:12.603 [main] INFO  samsara.TestLoginPageSamsara - Primes su: [2, 3, 5, 7, 11, 13, 17, 19]
+16:14:23.648 [main] INFO  samsara.TestLoginPageSamsara - Primes su: [2, 3, 5, 7, 11, 13, 17, 19, 23]

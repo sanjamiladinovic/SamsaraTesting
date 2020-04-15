@@ -1,0 +1,173 @@
+package pageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class AlgorithmsPageObjects {
+
+	public WebDriver driver;
+
+	By panelTitleAlgorithms = By.cssSelector(".panel-heading div");
+	By panelBodyText = By.cssSelector(".lead");
+	By number = By.cssSelector("#length");
+	By secondTextField = By.id("plainText");
+	By fieldVinegereKey = By.cssSelector("#vgnKey");
+	By letterField = By.cssSelector("#letter");
+	By submitButton = By.cssSelector(".col-auto button");
+	By primeNumberResult = By.cssSelector("#primes");
+	By fibonacciResult = By.cssSelector("#fibonacci");
+	By factorialResult = By.cssSelector("#factorial");
+	By randomStringResult = By.id("rand");
+	By plainTextResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[1]");
+	By xorVigenereKeyResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[2]");
+	By rot13CesarEncriptionResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[4]");
+	By vigenereResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[7]");
+	By reverseStringResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[9]");
+	By lettersFromRandomStringResult = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[1]");
+	By digitsFromRandomStringResult = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[2]");
+	By isItPalindrom = By.xpath("//div[@class='panel-body']//div[2]//p[3]");
+	By containsSearchKey = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[4]");
+	By containsLetter = By.xpath("//div[@class='panel-body']//div[2]//p[5]");
+	By possiblePermutations = By.xpath("//body//textarea[1]");
+
+	public AlgorithmsPageObjects(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+
+		this.driver = driver;
+
+	}
+
+	public WebElement getPanelTitleAlgorithms() {
+
+		return driver.findElement(panelTitleAlgorithms);
+
+	}
+
+	public WebElement getPanelBodyText() {
+
+		return driver.findElement(panelBodyText);
+
+	}
+
+	public WebElement enterNumber() {
+
+		return driver.findElement(number);
+
+	}
+
+	public WebElement enterSecondTextField() {
+
+		return driver.findElement(secondTextField);
+
+	}
+
+	public WebElement enterFieldVinegereKey() {
+
+		return driver.findElement(fieldVinegereKey);
+
+	}
+
+	public WebElement enterLetterField() {
+
+		return driver.findElement(letterField);
+
+	}
+
+	public WebElement pressSubmitButton() {
+
+		return driver.findElement(submitButton);
+
+	}
+
+	public WebElement getPrimeNumberResult() {
+
+		return driver.findElement(primeNumberResult);
+
+	}
+
+	public WebElement getFibonacciResult() {
+
+		return driver.findElement(fibonacciResult);
+
+	}
+
+	public WebElement getFactorialResult() {
+
+		return driver.findElement(factorialResult);
+
+	}
+
+	public WebElement getRandomStringResult() {
+
+		return driver.findElement(randomStringResult);
+
+	}
+
+	public WebElement getPlainTextResult() {
+
+		return driver.findElement(plainTextResult);
+
+	}
+
+	public WebElement getXorVigenereKeyResult() {
+
+		return driver.findElement(xorVigenereKeyResult);
+
+	}
+
+	public WebElement getRot13CesarEncriptionResult() {
+
+		return driver.findElement(rot13CesarEncriptionResult);
+
+	}
+
+	public WebElement getVigenereResult() {
+
+		return driver.findElement(vigenereResult);
+
+	}
+
+	public WebElement getReverseStringResult() {
+
+		return driver.findElement(reverseStringResult);
+
+	}
+
+	public WebElement getLettersFromRandomStringResult() {
+
+		return driver.findElement(lettersFromRandomStringResult);
+
+	}
+
+	public WebElement getDigitsFromRandomStringResult() {
+
+		return driver.findElement(digitsFromRandomStringResult);
+
+	}
+
+	public WebElement trueFalseIsItPalindrom() {
+
+		return driver.findElement(isItPalindrom);
+
+	}
+
+	public WebElement trueFalsePlainTextContainsSearcheKey() {
+
+		return driver.findElement(containsSearchKey);
+
+	}
+
+	public WebElement trueFalsePlainTextcontainsLetter() {
+
+		return driver.findElement(containsLetter);
+
+	}
+
+	public WebElement countPossiblePermutations() {
+
+		return driver.findElement(possiblePermutations);
+
+	}
+
+}

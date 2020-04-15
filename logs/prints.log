@@ -1,5 +1,3 @@
-13:21:46.734 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Samsara text title is good.
-13:21:46.902 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Reset Password page text title is good.
-13:21:47.021 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - Text title Login in up right corner is wrong!
-13:21:47.134 [main] ERROR samsara.testImageAndTextOnResetPasswordPage - Question title is wrong!
-13:21:47.134 [main] INFO  samsara.testImageAndTextOnResetPasswordPage - -------------------------------------------------------------------------------------------------------
+12:19:52.160 [main] INFO  samsara.ReverseStringAndPalindromTest - Test checkReversedRandomString - myReverseString je: AzWepxappReverseString: AzWepx
+12:59:10.698 [main] INFO  samsara.ReverseStringAndPalindromTest - Test checkReversedRandomString - myReverseString je: QAqk1TappReverseString: QAqk1T
+13:09:04.106 [main] INFO  samsara.ReverseStringAndPalindromTest - Test checkReversedRandomString - myReverseString je: 0OFJBaappReverseString: 0OFJBa

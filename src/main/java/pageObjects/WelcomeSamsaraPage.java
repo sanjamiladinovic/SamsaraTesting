@@ -14,13 +14,13 @@ public class WelcomeSamsaraPage {
 
 		this.driver = driver;
 	}
-	// Lokatori
+	// Locirani WebElementi
 
 	By welcomeMessage = By.xpath("//div[@class='panel-heading']/div");
 
 	
 
-	// WebElementi
+	// WebElementi metode
 
 	public WebElement welcomeMessageBoardPage() {
 

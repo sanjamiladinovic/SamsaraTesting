@@ -44,10 +44,10 @@ public class testImageAndTextOnResetPasswordPage extends BaseClassSamsara {
 		else
 			log.error("Reset Password page text title is wrong!");
 //Kako istestirati tekst u dugmetu???
-//		if (resetPasswordPage.backToLoginPageViaLoginButtonUpRightCorner().getText().equalsIgnoreCase(" Log In"))
-//			log.info("Text title Login in up right corner is good.");
-//		else
-//			log.info("Text title Login in up right corner is wrong!");
+		if (resetPasswordPage.backToLoginPageViaLoginButtonUpRightCorner().getText().contains("Log In"))
+			log.info("Text title Login in up right corner is good.");
+		else
+			log.info("Text title Login in up right corner is wrong!");
 
 //		softAssert.assertEquals(resetPasswordPage.checkPanelTitle().getText(), "Reset Password");
 //
@@ -63,6 +63,13 @@ public class testImageAndTextOnResetPasswordPage extends BaseClassSamsara {
 
 			log.error("Question title is wrong!");
 			System.out.println("Question title is wrong!");
+		}
+
+		if (resetPasswordPage.checkCatImage().isDisplayed())
+			log.info("Immage is displayed.");
+		else {
+			log.error("Immage is displayed.");
+			System.out.println("Slika nije prikazana.");
 		}
 //		softAssert.assertEquals(resetPasswordPage.checkQuestionTitle().getText(),
 //				"Enter username to get your security question.");

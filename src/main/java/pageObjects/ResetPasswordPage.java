@@ -15,7 +15,7 @@ public class ResetPasswordPage {
 	By confirmPasswordField = By.id("repassword");
 	By resetPasswordButton = By.id("submitButton");
 	By backToLoginPageLink = By.linkText("Login");
-	By catImage = By.id("iconmelon");
+	By catImage = By.cssSelector(".iconmelon");
 	By loginButtonUpRightCorner = By.cssSelector("div[class='container-fluid'] ul:nth-child(3) li a");
 	By samsaraBackToLoginPage = By.cssSelector(".navbar-brand");
 	By password = By.cssSelector("#passwordMessage");

@@ -27,7 +27,7 @@ public class BaseClassSamsara {
 		if (browserName.contentEquals("chrome")) {
 
 			System.setProperty("webdriver.chrome.driver",
-					"C:\\Users\\sanja.miladinovic\\Instalacije Sanja\\chromedriver_win32\\chromedriver.exe");
+					"C:\\Users\\sanja.miladinovic\\Instalacije Sanja\\chromedriver_win32_OLD\\chromedriver.exe");
 			driver = new ChromeDriver();
 
 		} else if (browserName.equals("firefox")) {
