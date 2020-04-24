@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import pageObjects.LoginPageSamsara;
 import pageObjects.NewAccountPageObjects;
 import resources.BaseClassSamsara;
+import resources.DataProviders;
 
 public class TestRegistratingNewAccount extends BaseClassSamsara {
 
@@ -24,21 +25,23 @@ public class TestRegistratingNewAccount extends BaseClassSamsara {
 	public void initialize() throws IOException {
 		driver = initializeDriver();
 		log.info("Driver is initialised.");
-
-	}
-
-	@Test(dataProvider = "getData1") // Mucila sam se da spojim ovaj deo sa unosom ostalih polja, koja bi se unosila
-										// ako se ne obrise polje kod, pa sam napravila izdvojeni test za taj slucaj
-
-	public void testLoginCodeWarningMessage(String code1) throws InterruptedException {
 		driver.get(prop.getProperty("url"));
 		log.info("Logged in: " + driver.getTitle());
+
+	}
+//IZBACILI SU POLJE CODE
+	@Test(enabled = false, dataProviderClass = DataProviders.class, dataProvider = "getDataTestLoginCodeWarningMessage")
+
+	public void testLoginCodeWarningMessage(String code1) throws InterruptedException {
+
 		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
 		loginPageSamsara.createAccountLink().click();
 
 		NewAccountPageObjects newAccountPageObjects = new NewAccountPageObjects(driver);
 
-		Assert.assertEquals(newAccountPageObjects.accountLandingPageMessage().getText(), "Resister new account.");
+		Assert.assertTrue(
+				newAccountPageObjects.accountLandingPageMessage().getText().equalsIgnoreCase("Resister new account."),
+				"Link 'Create account' works.");
 
 		newAccountPageObjects.registrationFieldCode().sendKeys(code1);
 
@@ -47,37 +50,52 @@ public class TestRegistratingNewAccount extends BaseClassSamsara {
 				newAccountPageObjects.registrationFieldCode().sendKeys(Keys.BACK_SPACE);
 				code1 = code1.substring(0, code1.length() - 1);
 			}
+
 			System.out.println(newAccountPageObjects.registrationFieldCodeMessage().getText());
+			Assert.assertEquals(newAccountPageObjects.registrationFieldCodeMessage().getText(),
+					"Bla bla incorect first name.", "Poruka se ili nije pojavila ili nije dobro ispisana.");
 			log.info("Warning message - Registration code failed.");
 		}
 
 	}
-	@Test
-	public void backToLoginPageViaSamsaraLinkOnCreateAccount() throws InterruptedException {
-		driver.get(prop.getProperty("url"));
-		log.info("Logged in: " + driver.getTitle());
+
+	@Test(enabled = true, priority = 2)
+	public void backToLoginPageViaSamsaraLinkOnCreateAccountWhenWeAreNotLogged() throws InterruptedException {
+
+		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
+		loginPageSamsara.createAccountLink().click();
+
+		NewAccountPageObjects newAccountPageObjects = new NewAccountPageObjects(driver);
+
+		newAccountPageObjects.samsaraLinkBack().click();
+		Assert.assertTrue(loginPageSamsara.usernameField().isDisplayed(),
+				"Link Samsara from page for Account Creation(via link from login page) doesn't works..(if we are not logged before)");
+
+		log.debug(
+				"Link Samsara from page for Account Creation(via link from login page) works (if we are not logged before)");
+
+		System.out.println("Vraceno preko Samsara na Login stranu...(if we are not logged before)");
+
+		log.error("Link Samsara on page for Account Creation(via link from loginpage) doesn't works");
+
+	}
+
+	@Test(enabled = true, priority = 3)
+	public void registerNewAccountTextTitleCheck() {
+
 		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
 		loginPageSamsara.createAccountLink().click();
 
 		NewAccountPageObjects newAccountPageObjects = new NewAccountPageObjects(driver);
 
 		Assert.assertEquals(newAccountPageObjects.accountLandingPageMessage().getText(), "Register new account.");
+		log.info("Title is correct.");
 
-		newAccountPageObjects.samsaraLinkBack().click();
-		if(loginPageSamsara.usernameField().isDisplayed()) {
-			log.debug("Link Samsara on page for Account Creation(via link from loginpage) works");
-			System.out.println("Vraceno preko Samsara na Login stranu");
-		}
-		else
-			log.error("Link Samsara on page for Account Creation(via link from loginpage) doesn't works");
-		
-		
-		
 	}
-	@Test
-	public void backOnLoginPageViaLoginButtonFromAreateAccount() throws InterruptedException {
-		driver.get(prop.getProperty("url"));
-		log.info("Logged in: " + driver.getTitle());
+
+	@Test(enabled = true, priority = 1)
+	public void backToLoginPageViaLoginButtonFromAreateAccountIfWeAreNotLogged() throws InterruptedException {
+
 		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
 		loginPageSamsara.createAccountLink().click();
 
@@ -86,34 +104,21 @@ public class TestRegistratingNewAccount extends BaseClassSamsara {
 		Assert.assertEquals(newAccountPageObjects.accountLandingPageMessage().getText(), "Resister new account.");
 
 		newAccountPageObjects.loginButtonBack().click();
-		if(loginPageSamsara.usernameField().isDisplayed()) {
-			log.debug("Link LoginButton on page for Account Creation(right in header) works");
-			System.out.println("Vraceno preko LoginButton-a na Login stranu");
-		}
-		else
-			log.error("Link LoginButton on page for Account Creation(right in header) doesn't works");
-		
-		
-		
+
+		Assert.assertTrue(loginPageSamsara.usernameField().isDisplayed(),
+				"Link LoginButton for Account Creation(right in header) doesn't works...(if we are not logged before)");
+
+		log.debug(
+				"Link LoginButton on page for Account Creation(right in header) works..(if we are not logged before)");
+		System.out.println("Vraceno preko LoginButton-a na Login stranu...(if we are not logged before)");
+
 	}
 
-	@DataProvider
-	public Object[] getData1() {
-
-		Object[] data1 = new Object[3];
-		data1[0] = "";
-		data1[1] = "55555";
-		data1[2] = "jdgjgdj";
-		return data1;
-	}
-
-	@Test(dataProvider = "getData")
-	public void testLoginPositiveCases(String code, String username, String firstName, String lastName, String about,
+	@Test(priority = 4, dataProviderClass = DataProviders.class, dataProvider = "getDataTestRegisterNewAccount")
+	public void testRegisterNewAccount(String username, String firstName, String lastName, String about,
 			String secretQuestion, String secretAnswer, String password, String rePassword)
 			throws InterruptedException {
 
-		driver.get(prop.getProperty("url"));
-		log.info("Logged in: " + driver.getTitle());
 		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
 		loginPageSamsara.createAccountLink().click();
 
@@ -121,7 +126,6 @@ public class TestRegistratingNewAccount extends BaseClassSamsara {
 
 		Assert.assertEquals(newAccountPageObjects.accountLandingPageMessage().getText(), "Resister new account.");
 
-		newAccountPageObjects.registrationFieldCode().sendKeys(code);
 		newAccountPageObjects.usernameField().sendKeys(username);
 		newAccountPageObjects.firstNameFiel().sendKeys(firstName);
 		newAccountPageObjects.lastNameFiel().sendKeys(lastName);
@@ -130,49 +134,14 @@ public class TestRegistratingNewAccount extends BaseClassSamsara {
 		newAccountPageObjects.secretAnswerField().sendKeys(secretAnswer);
 		newAccountPageObjects.passwordField().sendKeys(password);
 		newAccountPageObjects.rePasswordField().sendKeys(rePassword);
+		Assert.assertTrue(newAccountPageObjects.signUpButton().isEnabled(), "Button SignUp is disabled.");
 
-		if (newAccountPageObjects.signUpButton().isEnabled()) {
-			System.out.println("Button SignUp is: " + newAccountPageObjects.signUpButton().isEnabled());
-			newAccountPageObjects.signUpButton().click();
-		} else {
-			log.fatal("SubmitButton is disabled.");
-		}
-	}
+		System.out.println("Button SignUp is: " + newAccountPageObjects.signUpButton().isEnabled());
 
-	@DataProvider()
-	public Object[][] getData() {
+		newAccountPageObjects.signUpButton().click();
 
-		Object[][] data = new Object[2][9];
+		log.fatal("Button SignUp is enabled.");
 
-		data[0][0] = "sfsfs";
-		data[0][1] = "user87";
-		data[0][2] = "Test Name";
-		data[0][3] = "Test Last Name";
-		data[0][4] = "Nothing";
-		data[0][5] = "First teacher?";
-		data[0][6] = "Secret1";
-		data[0][7] = "User87";
-		data[0][8] = "user87";
-
-		data[1][0] = "54125";
-		data[1][1] = "";
-		data[1][2] = "name88";
-		data[1][3] = "lastname88";
-		data[1][4] = "everything";
-		data[1][5] = "Age?";
-		data[1][6] = "99";
-		data[1][7] = "Ggg88";
-		data[1][8] = "Ggg88";
-
-		return data;
-	}
-
-	@AfterMethod
-	public void closeTheBrowser() {
-		log.info(
-				"-------------------------------------------------------------------------------------------------------");
-		driver.close();
-		driver = null;
 	}
 
 }

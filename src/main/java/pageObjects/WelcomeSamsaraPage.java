@@ -16,7 +16,8 @@ public class WelcomeSamsaraPage {
 	}
 	// Locirani WebElementi
 
-	By welcomeMessage = By.xpath("//div[@class='panel-heading']/div");
+	By welcomeMessage = By.xpath("//div[@class='panel-title text-center']");
+	By homeButton = By.xpath("//a[contains(text(),'Home')]");
 
 	
 

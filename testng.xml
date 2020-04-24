@@ -3,9 +3,22 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="samsara.TestLoginPageSamsara"/>
-      <class name="samsara.TestRegistratingNewAccount"/>
+      <class name="samsara.XorTest"/>
+      <class name="samsara.testImageAndTextOnResetPasswordPage"/>
+      <class name="samsara.FibonacciAlgorithmTest"/>
+      <class name="samsara.PrimeNumbers"/>
       <class name="samsara.AppTest"/>
+      <class name="samsara.SearchKeyFieldTestNegative"/>
+      <class name="samsara.FindLettersDigitsInPlainTextTest"/>
+      <class name="samsara.ReverseStringAndPalindromTest"/>
+      <class name="samsara.VigenereCodeTest"/>
+      <class name="samsara.FactorialTest"/>
+      <class name="samsara.TestResetPassword"/>
+      <class name="samsara.TestLoginPageSamsara"/>
+      <class name="samsara.ContainsLetterTestPossitive"/>
+      <class name="samsara.TestRegistratingNewAccount"/>
+      <class name="samsara.ContainsKeyTestPositive"/>
+      <class name="samsara.TestAlgorithmsPage"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

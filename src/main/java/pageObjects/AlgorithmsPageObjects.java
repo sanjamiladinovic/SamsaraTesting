@@ -6,30 +6,32 @@ import org.openqa.selenium.WebElement;
 
 public class AlgorithmsPageObjects {
 
-	public WebDriver driver;
+	private WebDriver driver;
 
-	By panelTitleAlgorithms = By.cssSelector(".panel-heading div");
-	By panelBodyText = By.cssSelector(".lead");
-	By number = By.cssSelector("#length");
-	By secondTextField = By.id("plainText");
-	By fieldVinegereKey = By.cssSelector("#vgnKey");
-	By letterField = By.cssSelector("#letter");
-	By submitButton = By.cssSelector(".col-auto button");
-	By primeNumberResult = By.cssSelector("#primes");
-	By fibonacciResult = By.cssSelector("#fibonacci");
-	By factorialResult = By.cssSelector("#factorial");
-	By randomStringResult = By.id("rand");
-	By plainTextResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[1]");
-	By xorVigenereKeyResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[2]");
-	By rot13CesarEncriptionResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[4]");
-	By vigenereResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[7]");
-	By reverseStringResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[9]");
-	By lettersFromRandomStringResult = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[1]");
-	By digitsFromRandomStringResult = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[2]");
-	By isItPalindrom = By.xpath("//div[@class='panel-body']//div[2]//p[3]");
-	By containsSearchKey = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[4]");
-	By containsLetter = By.xpath("//div[@class='panel-body']//div[2]//p[5]");
-	By possiblePermutations = By.xpath("//body//textarea[1]");
+	private By panelTitleAlgorithms = By.cssSelector(".panel-heading div");
+	private By panelBodyText = By.cssSelector(".lead");
+	private By number = By.cssSelector("#length");
+	private By secondTextField = By.id("plainText");
+	private By fieldVinegereKey = By.cssSelector("#vgnKey");
+	private By letterField = By.cssSelector("#letter");
+	private By submitButton = By.cssSelector(".col-auto button");
+	private By primeNumberResult = By.cssSelector("#primes");
+	private By fibonacciResult = By.cssSelector("#fibonacci");
+	private By factorialResult = By.cssSelector("#factorial");
+	private By randomStringResult = By.id("rand");
+	private By plainTextResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[1]");
+	private By xorVigenereKeyResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[2]");
+	private By rot13CesarEncriptionResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[4]");
+	private By vigenereResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[7]");
+	private By reverseStringResult = By.xpath("//div[@class='panel panel-default']//div[1]//p[9]");
+	private By lettersFromRandomStringResult = By
+			.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[1]");
+	private By digitsFromRandomStringResult = By
+			.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[2]");
+	private By isItPalindrom = By.xpath("//div[@class='panel-body']//div[2]//p[3]");
+	private By containsSearchKey = By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[2]/div[3]/div[2]/p[4]");
+	private By containsLetter = By.xpath("//div[@class='panel-body']//div[2]//p[5]");
+	private By possiblePermutations = By.xpath("//body//textarea[1]");
 
 	public AlgorithmsPageObjects(WebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -167,6 +169,18 @@ public class AlgorithmsPageObjects {
 	public WebElement countPossiblePermutations() {
 
 		return driver.findElement(possiblePermutations);
+
+	}
+
+	public void fillTheAlgorithmsFieldsAndSubmit(String length, String searchKey, String vigenereKey, char letter) {
+		enterNumber().sendKeys(length);
+		enterSecondTextField().sendKeys(searchKey);
+		enterFieldVinegereKey().sendKeys(vigenereKey);
+		enterLetterField().sendKeys(Character.toString(letter));// moralo je da se doda da se
+		// karakter pretvori u string
+		// zato sto sendKeys ocekuje
+		// string
+		pressSubmitButton().click();
 
 	}
 

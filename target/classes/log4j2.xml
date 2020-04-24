@@ -20,19 +20,12 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Logger name="samsara.TestLoginPage" level="trace" adittivity="false">
+		<Logger name="samsara.*" level="trace">
 
 			<AppenderRef ref="File" />
 		</Logger>
-		<Logger name="samsara.TestAlgorithmsPage" level="trace" adittivity="false">
 
-			<AppenderRef ref="File" />
-		</Logger>
-		<Logger name="samsara.TestRegistratingNewAccount" level="trace" adittivity="false">
-
-			<AppenderRef ref="File" />
-		</Logger>
-		<Root level="trace">
+		<Root level="trace" additivity="false">
 			<AppenderRef ref="File" />
 		</Root>
 	</Loggers>

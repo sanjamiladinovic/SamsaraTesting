@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import pageObjects.LoginPageSamsara;
 import pageObjects.WelcomeSamsaraPage;
 import resources.BaseClassSamsara;
+import resources.DataProviders;
 
 public class TestLoginPageSamsara extends BaseClassSamsara {
 
@@ -22,14 +23,13 @@ public class TestLoginPageSamsara extends BaseClassSamsara {
 	public void initialize() throws IOException {
 		driver = initializeDriver();
 		log.info("Driver is initialised.");
-
-	}
-
-	@Test(dataProvider = "getData")
-	// Login - positive/negative
-	public void testLogin(String username, String password) throws InterruptedException {
 		driver.get(prop.getProperty("url"));
 		log.info("Logged in: " + driver.getTitle());
+	}
+
+	@Test(dataProviderClass = DataProviders.class, dataProvider = "getDataUsernamePassword")
+	// Login - positive/negative
+	public void testLogin(String username, String password) throws InterruptedException {
 
 		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
 
@@ -38,19 +38,10 @@ public class TestLoginPageSamsara extends BaseClassSamsara {
 		loginPageSamsara.loginButton().click();
 
 		WelcomeSamsaraPage welcomeSamsaraPage = new WelcomeSamsaraPage(driver);
+		Assert.assertTrue(welcomeSamsaraPage.welcomeMessageBoardPage().getText()
+				.equalsIgnoreCase("Hello, and welcome to our gamers page!"), "Nismo se uspesno ulogovali u app.");
 
-		if (loginPageSamsara.loginWarnMessage().isDisplayed()) {
-
-			log.debug(loginPageSamsara.loginWarnMessage().getText());
-
-		}
-
-		else {
-			// Nesto nece da pronadje elemenat.
-			System.out.println(welcomeSamsaraPage.welcomeMessageBoardPage().getText());
-			// Thread.sleep(3000);
-		}
-
+		log.info("Success login.");
 	}
 
 	@Test
@@ -67,58 +58,12 @@ public class TestLoginPageSamsara extends BaseClassSamsara {
 	}
 
 	@Test
-	public void resetPassword() {
-		driver.get(prop.getProperty("url"));
-		log.info("Logged in: " + driver.getTitle());
+	public void resetPasswordOption() {
+
 		LoginPageSamsara loginPageSamsara = new LoginPageSamsara(driver);
 		loginPageSamsara.resetPasswordLink().click();
+		log.info("Success click on resetPassvordLink.");
 
-	}
-
-	@AfterMethod
-	public void closeTheBrowser() {
-		log.info(
-				"-------------------------------------------------------------------------------------------------------");
-		driver.close();
-		driver = null;
-	}
-
-	@DataProvider()
-
-	public Object[][] getData() {
-
-		Object[][] data = new Object[10][2];
-		data[0][0] = "user";
-		data[0][1] = "password";
-
-		data[1][0] = "user";
-		data[1][1] = "password1";
-
-		data[2][0] = "user1";
-		data[2][1] = "password";
-
-		data[3][0] = "";
-		data[3][1] = "";
-
-		data[4][0] = "";
-		data[4][1] = "password";
-
-		data[5][0] = "user";
-		data[5][1] = "";
-
-		data[6][0] = "00000000";
-		data[6][1] = "password";
-
-		data[7][0] = "user";
-		data[7][1] = "passwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxord";
-
-		data[8][0] = "trshryhjuryhrgrejdhajfdgnjdkgdlkgd/klgjdkhj/lsrkjglesgjkldgjm/klsjgklesrgj";
-		data[8][1] = "password";
-
-		data[9][0] = ".#@#";
-		data[9][1] = "password";
-
-		return data;
 	}
 
 }

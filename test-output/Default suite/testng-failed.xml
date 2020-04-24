@@ -5,9 +5,9 @@
     <classes>
       <class name="samsara.XorTest">
         <methods>
-          <include name="testFactorial" invocation-numbers="0 1"/>
           <include name="initialize"/>
-          <include name="testAlgorithmsSamsaraAfter"/>
+          <include name="close"/>
+          <include name="testFactorial" invocation-numbers="1 2"/>
         </methods>
       </class> <!-- samsara.XorTest -->
     </classes>

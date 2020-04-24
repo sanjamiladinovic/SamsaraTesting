@@ -1,0 +1,6 @@
+16:04:37.273 [main] INFO  samsara.TestResetPassword - We are returned to loginPage via Login Link.
+19:58:02.140 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+19:58:12.514 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+19:59:17.515 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+19:59:28.445 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+19:59:40.605 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.

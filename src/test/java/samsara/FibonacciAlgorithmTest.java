@@ -1,6 +1,5 @@
 package samsara;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,39 +14,25 @@ import org.testng.annotations.Test;
 
 import pageObjects.AlgorithmsPageObjects;
 import resources.BaseClassSamsara;
+import resources.DataProviders;
 import util.FibonacciUtil;
 
 public class FibonacciAlgorithmTest extends BaseClassSamsara {
 	public static Logger log = LogManager.getLogger(TestAlgorithmsPage.class.getName());
 
-	@BeforeTest
-	public void initialize() throws IOException, InterruptedException {
-
-		driver = initializeDriver();
-		driver.get(prop.getProperty("url1"));
-		driver.manage().window().maximize();
-		System.out.println(driver.getTitle());
-
-	}
-
-	@Test(dataProvider = "getData")
+	@Test(dataProviderClass = DataProviders.class, dataProvider = "getData")
 	// FIBONACCI SEQUENCE
-	public void fibonacciSequencePositive(String length, String searchKey, String vigenereKey, CharSequence[] letter)
+	public void fibonacciSequencePositive(String length, String searchKey, String vigenereKey, char letter)
 			throws InterruptedException {
 
-		AlgorithmsPageObjects algorithmFibonacci = new AlgorithmsPageObjects(driver);
-
-		algorithmFibonacci.enterNumber().sendKeys(length);
-		algorithmFibonacci.enterSecondTextField().sendKeys(searchKey);
-		algorithmFibonacci.enterFieldVinegereKey().sendKeys(vigenereKey);
-		algorithmFibonacci.enterLetterField().sendKeys(letter);
-		algorithmFibonacci.pressSubmitButton().click();
+		AlgorithmsPageObjects apo = new AlgorithmsPageObjects(driver);
+		apo.fillTheAlgorithmsFieldsAndSubmit(length, searchKey, vigenereKey, letter);
 
 		int fibonacciLengthNum = Integer.parseInt(length);
 		List<Integer> myFibonacciList = FibonacciUtil.getFibonacciNum(fibonacciLengthNum);
 		System.out.println("My f. list: " + myFibonacciList);
 
-		String fibonacciResult = algorithmFibonacci.getFibonacciResult().getAttribute("placeholder");
+		String fibonacciResult = apo.getFibonacciResult().getAttribute("placeholder");
 		String newFibonacciResult = fibonacciResult.replace("[", "");
 		String newNewFibonacciResult = newFibonacciResult.replace("]", "");
 		String pojedinacniZnakBezRazmaka = newNewFibonacciResult.replace(" ", "");
@@ -73,34 +58,6 @@ public class FibonacciAlgorithmTest extends BaseClassSamsara {
 
 		Assert.assertEquals(appFibonaciListNumber, myFibonacciList);
 
-	}
-
-	@AfterMethod
-	public void testAlgorithmsSamsaraAfter() {
-		// driver.close();
-
-	}
-
-	@DataProvider
-	public Object[][] getData() {
-
-		// Object[][] dataAlg = new Object[1][4];
-		return new Object[][] {
-//			dataAlg[0][0] = "6";
-//			dataAlg[0][1] = "";
-//			dataAlg[0][2] = "samasa";
-//			dataAlg[0][3] = "s";
-				{ "6", "", "samasa", "s" }, { "7", "", "samasa", "s" }, { "8", "", "samasa", "s" },
-				/*
-				 * { "9", "", "samasa", "s" }, { "10", "", "samasa", "s" } , { "11", "",
-				 * "samasa", "s" }, { "12", "", "samasa", "s" }, { "13", "", "samasa", "s" }, {
-				 * "14", "", "samasa", "s" }, { "15", "", "samasa", "s" }, { "25", "", "samasa",
-				 * "s" }
-				 */
-
-		};
-
-		// return dataAlg;
 	}
 
 }

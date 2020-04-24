@@ -1,6 +1,5 @@
 package samsara;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,13 +7,11 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import pageObjects.AlgorithmsPageObjects;
 import resources.BaseClassSamsara;
+import resources.DataProviders;
 import util.PrimeUtil;
 
 public class PrimeNumbers {
@@ -22,27 +19,12 @@ public class PrimeNumbers {
 	public static class TestAlgorithmsPage extends BaseClassSamsara {
 		public static Logger log = LogManager.getLogger(PrimeNumbers.class.getName());
 
-		@BeforeTest
-		public void initialize() throws IOException, InterruptedException {
-
-			driver = initializeDriver();
-			driver.get(prop.getProperty("url1"));
-			driver.manage().window().maximize();
-			System.out.println(driver.getTitle());
-
-		}
-
-		@Test(dataProvider = "getData")
-		public void primeNumbersTestPositive(String length, String searchKey, String vigenereKey, CharSequence[] letter)
+		@Test(dataProviderClass = DataProviders.class, dataProvider = "getData")
+		public void primeNumbersTestPositive(String length, String searchKey, String vigenereKey, char letter)
 				throws InterruptedException {
 
-			AlgorithmsPageObjects algorithmPrimes = new AlgorithmsPageObjects(driver);
-
-			algorithmPrimes.enterNumber().sendKeys(length);
-			algorithmPrimes.enterSecondTextField().sendKeys(searchKey);
-			algorithmPrimes.enterFieldVinegereKey().sendKeys(vigenereKey);
-			algorithmPrimes.enterLetterField().sendKeys(letter);
-			algorithmPrimes.pressSubmitButton().click();
+			AlgorithmsPageObjects apo = new AlgorithmsPageObjects(driver);
+			apo.fillTheAlgorithmsFieldsAndSubmit(length, searchKey, vigenereKey, letter);
 
 			// ITERIRAM KOJI SU ISPRAVNI PROSTI BROJEVI ZA ZADATI BROJ CLANOVA NIZA
 
@@ -58,7 +40,7 @@ public class PrimeNumbers {
 			log.info("Correct primes are: " + myPrimes);
 
 			// POREDIM DA LI MOJE PROSTE BROJEVE SA DOBIJENIM U PROGRAMU
-			String primesApp = algorithmPrimes.getPrimeNumberResult().getAttribute("placeholder");
+			String primesApp = apo.getPrimeNumberResult().getAttribute("placeholder");
 			String trimovanPrimesApp = primesApp.replace(" ", "");
 			String trimovanPrimesAppBezZagrade = trimovanPrimesApp.replace("[", "");
 			String trimovanPrimesAppBezZagrade1 = trimovanPrimesAppBezZagrade.replace("]", "");
@@ -105,34 +87,6 @@ public class PrimeNumbers {
 //			SoftAssert softAssertion = new SoftAssert();
 //			softAssertion.assertEquals(primesApp, primes);
 //			softAssertion.assertAll();
-		}
-
-		@AfterMethod
-		public void testAlgorithmsSamsaraAfter() {
-			driver.close();
-
-		}
-
-		@DataProvider
-		public Object[][] getData() {
-
-			// Object[][] dataAlg = new Object[1][4];
-			return new Object[][] {
-//				dataAlg[0][0] = "6";
-//				dataAlg[0][1] = "";
-//				dataAlg[0][2] = "samasa";
-//				dataAlg[0][3] = "s";
-					{ "6", "", "samasa", "s" }, { "7", "", "samasa", "s" }, { "8", "", "samasa", "s" },
-					{ "9", "", "samasa", "s" },
-					{ "10", "", "samasa", "s" }/*
-												 * , { "11", "", "samasa", "s" }, { "12", "", "samasa", "s" }, { "13",
-												 * "", "samasa", "s" }, { "14", "", "samasa", "s" }, { "15", "",
-												 * "samasa", "s" }, { "25", "", "samasa", "s" }
-												 */
-
-			};
-
-			// return dataAlg;
 		}
 
 	}
