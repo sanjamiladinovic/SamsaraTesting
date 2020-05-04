@@ -1,14 +1,22 @@
 package pageObjects;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginPageSamsara {
+import resources.BaseClassSamsara;
 
-	public WebDriver driver;
+
+public class LoginPageSamsara extends BaseClassSamsara{
+	public static Logger log = LogManager.getLogger(LoginPageSamsara.class.getName());
+	private WebDriver driver;
+	public Properties prop;
 
 	// Locirani WebElementi
 
@@ -16,7 +24,7 @@ public class LoginPageSamsara {
 	By password = By.id("password");
 	By loginButton = By.xpath("//input[@type='submit']");
 	By createAccount = By.linkText("Create account");
-	//By resetPassword = By.linkText("reset password");
+	// By resetPassword = By.linkText("reset password");
 	By loginOption = By.xpath("//a[contains(text(),'Log In')]");
 	By navBarBrand = By.cssSelector(".navbar-brand");
 	By loginMessage = By.xpath("//div[@class='alert alert-danger']");
@@ -76,9 +84,45 @@ public class LoginPageSamsara {
 
 		return driver.findElement(image);
 	}
+
 	public WebElement resetPasswordLink() {
 
 		return driver.findElement(linkResetPassword);
+	}
+
+	public void openAsUserPositive() throws IOException {
+		
+		prop = new Properties();
+
+		FileInputStream fis = new FileInputStream(
+				"C:\\Users\\sanja.miladinovic\\PracticeSamsara\\src\\main\\java\\resources\\data.properties");
+		prop.load(fis);
+		
+		String rightUser=prop.getProperty("rightUser");
+		String rightPassword=prop.getProperty("rightPassword");
+		usernameField().sendKeys(rightUser);
+		passwordField().sendKeys(rightPassword);
+		loginButton().click();
+		log.info("Open Endava training web site");
+		log.debug("Open Endava training web site");
+
+	}
+	public void openAsAdminPositive() throws IOException {
+		
+		prop = new Properties();
+
+		FileInputStream fis = new FileInputStream(
+				"C:\\Users\\sanja.miladinovic\\PracticeSamsara\\src\\main\\java\\resources\\data.properties");
+		prop.load(fis);
+		
+		String rightUser=prop.getProperty("rightAdmin");
+		String rightPassword=prop.getProperty("rightAdminPassword");
+		usernameField().sendKeys(rightUser);
+		passwordField().sendKeys(rightPassword);
+		loginButton().click();
+		log.info("Open Endava training web site");
+		log.debug("Open Endava training web site");
+
 	}
 
 }
