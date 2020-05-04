@@ -115,6 +115,7 @@ public class DataProviders {
 
 		return data;
 	}
+
 	@DataProvider()
 
 	public Object[][] getDataTestResetPassword() {
@@ -145,20 +146,59 @@ public class DataProviders {
 //		data[4][2] = "";
 //		data[4][3] = "";
 		return data;
-		
+
 	}
-	
+
 	@DataProvider
 	public Object[][] getDataVigenereCodeTest() {
 
 		return new Object[][] {
 
-				{ "6", "", "samasa", 's' }, 
-				{ "7", "", "samasa", 's' }, 
-				{ "8", "", "samasa", 's' },
+				{ "6", "", "samasa", 's' }, { "7", "", "samasa", 's' }, { "8", "", "samasa", 's' },
 
 		};
 
 	}
 
+	@DataProvider
+	public Object[][] verifyUserCanCreateHeroData() {
+
+		return new Object[][] { { "sanja123", 10, "Guardian" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyUserCanEditHeroData() {
+		return new Object[][] { { "sanja123", "sanja1234", 80, "Engineer" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyUserCanDeleteOwnHeroData() {
+		return new Object[][] { { "sanja1234" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyUserCanDeleteDoesntOwnHeroData() {
+		return new Object[][] { { "Rod" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyUserCanEditHeroNegativeData() {
+		return new Object[][] { { "igor123", "igor12345", 80, "Engineer" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyAdminCanCreateUserData() {
+		return new Object[][] {
+				{ "sanja123user", "Sanja", "Miladinovic", "About", "Secret question", "Secret answer", "Password1" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyAdminCanEditUserData() {
+		return new Object[][] { { "sanja123user", "sanja123", "Sanja1", "Miladinovic1", "About1" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyAdminCanDeleteUserData() {
+		return new Object[][] { { "sanja123" } };
+	}
 }

@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/test/java/samsara/VerifyAdminCanCreateEditDeleteUser.java=UTF-8
+encoding//src/test/java/samsara/VerifyHomePageTest.java=UTF-8
+encoding//src/test/java/samsara/VerifyUserCanCreateEditDeleteHero.java=UTF-8
+encoding//src/test/java/samsara/VerifyUserCanEditHeroNegative.java=UTF-8

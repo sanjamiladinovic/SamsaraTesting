@@ -28,6 +28,7 @@ public class BaseClassSamsara {
 				"C:\\Users\\sanja.miladinovic\\PracticeSamsara\\src\\main\\java\\resources\\data.properties");
 		prop.load(fis);
 
+		
 		String browserName = prop.getProperty("browser");
 		System.out.println(browserName);
 		if (browserName.contentEquals("chrome")) {
@@ -55,6 +56,7 @@ public class BaseClassSamsara {
 
 		driver = initializeDriver();
 		driver.get(prop.getProperty("url1"));
+		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		System.out.println(driver.getTitle());
 

@@ -1,6 +1,5 @@
-16:04:37.273 [main] INFO  samsara.TestResetPassword - We are returned to loginPage via Login Link.
-19:58:02.140 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
-19:58:12.514 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
-19:59:17.515 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
-19:59:28.445 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
-19:59:40.605 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+20:02:55.150 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+20:03:05.866 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+20:03:18.695 [main] INFO  samsara.VigenereCodeTest - Vigenere key is correctly created.
+20:09:42.201 [main] INFO  samsara.XorTest - PlainText je: FKS5jB Vigenere key je: samasa Moj ptXORvk: 5*>T#App ptXORvk: 5*>T#
+20:09:52.415 [main] INFO  samsara.XorTest - PlainText je: JqHA6F6 Vigenere key je: samasa Moj ptXORvk: 9% E'EApp ptXORvk: 9% E'E
