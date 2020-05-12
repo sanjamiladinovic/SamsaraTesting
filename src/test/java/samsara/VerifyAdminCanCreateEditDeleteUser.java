@@ -100,19 +100,6 @@ public class VerifyAdminCanCreateEditDeleteUser extends BaseClassSamsara {
 		assert userp.searchUserRow(userEditedName) == -1 : "Admin didn't delete the user.";
 	}
 
-	@Test(enabled = false, priority = 3, dataProviderClass = DataProviders.class, dataProvider = "verifyUserCanDeleteDoesntOwnHeroData")
-	public void verifyUserCanDeleteDoesntOwnHeroNegative(String doesntOwnedHero) throws IOException {
 
-		HeroesPageObjects heroesp = new HeroesPageObjects(driver);
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		int userRow = heroesp.searchHeroRow(doesntOwnedHero);
-		String queryTrashElClick = String.format("$($('#heroes-table tr')[%d]).find('.glyphicon-trash').click()",
-				userRow);
-		js.executeScript(queryTrashElClick);
-		String queriClickOnDeleteButton = "$('.modal-footer').find('.btn-danger').click()";
-		js.executeScript(queriClickOnDeleteButton);
-		assert heroesp.searchHeroRow(doesntOwnedHero) != -1 : "Doesn't Owned Hero is deleted.";
-	}
 
 }

@@ -21,17 +21,28 @@ public class HeroesPageObjects {
 	By addNewHero = By.xpath("//span[contains(text(),'Add New')]");
 	By nameFieldNewHero = By.id("name");
 	By levelFeldNewHero = By.id("level");
-	By editHeroName=By.xpath("//div[@id=\"editHeroModal\"]/div/div/form/div[1]/div[1]/input");
-	By editHeroLevel=By.xpath("//div[@id=\"editHeroModal\"]/div/div/form/div[1]/div[2]/input");
-	
+	By editHeroName = By.xpath("//div[@id=\"editHeroModal\"]/div/div/form/div[1]/div[1]/input");
+	By editHeroLevel = By.xpath("//div[@id=\"editHeroModal\"]/div/div/form/div[1]/div[2]/input");
+
 	By classNewHero = By.id("type");
-	By classEditedHero=By.xpath("//div[@id=\"editHeroModal\"]/div/div/form/div[1]/div[3]/select");
+	By classEditedHero = By.xpath("//div[@id=\"editHeroModal\"]/div/div/form/div[1]/div[3]/select");
 	By saveButton = By.id("submitButton");
 	By cancelButton = By.cssSelector("button[class='btn btn-default']");
 	By wholeTable = By.cssSelector("table[id='heroes-table']");
 	By deleteHeroButton = By.cssSelector(".modal-footer form button:nth-child(2)");
+	By searchHeroButton = By.xpath("//div[@id='custom-search-input']/div/span/button");
+	By searchHeroField = By.id("search");
 
 	// WebElementi metode
+	public WebElement searchHeroField() {
+
+		return driver.findElement(searchHeroField);
+	}
+
+	public WebElement searchHeroButton() {
+
+		return driver.findElement(searchHeroButton);
+	}
 
 	public WebElement addNewHero() {
 
@@ -67,14 +78,17 @@ public class HeroesPageObjects {
 
 		return driver.findElement(deleteHeroButton);
 	}
+
 	public WebElement editHeroName() {
 
 		return driver.findElement(editHeroName);
 	}
+
 	public WebElement editHeroLevel() {
 
 		return driver.findElement(editHeroLevel);
 	}
+
 	public WebElement classEditedHero() {
 
 		return driver.findElement(classEditedHero);
@@ -98,6 +112,22 @@ public class HeroesPageObjects {
 
 		}
 		return result;
+	}
+
+	public int countUsersColumnByName(String userName) {
+		int brojac = 0;
+		List<WebElement> rows = driver.findElement(wholeTable).findElements(By.tagName("tr"));
+		
+		for (int ir = 0; ir < rows.size(); ir++) {
+			List<WebElement> columns = rows.get(ir).findElements(By.tagName("td"));
+			for (int ic = 0; ic < columns.size(); ic++)
+				if (columns.get(3).getText().equals(userName)) {
+					brojac++;
+
+				}
+
+		}
+		return brojac;
 	}
 
 }

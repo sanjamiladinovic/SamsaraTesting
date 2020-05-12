@@ -15,20 +15,19 @@ import io.github.bonigarcia.wdm.InternetExplorerDriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClassSamsara {
-
+	
 	public static WebDriver driver;
 	public Properties prop;
 
 	public WebDriver initializeDriver() throws IOException {
 		// WebDriverWait w=new WebDriverWait(driver,20);
-		
+
 		prop = new Properties();
 
 		FileInputStream fis = new FileInputStream(
 				"C:\\Users\\sanja.miladinovic\\PracticeSamsara\\src\\main\\java\\resources\\data.properties");
 		prop.load(fis);
 
-		
 		String browserName = prop.getProperty("browser");
 		System.out.println(browserName);
 		if (browserName.contentEquals("chrome")) {
@@ -44,13 +43,14 @@ public class BaseClassSamsara {
 			driver = new FirefoxDriver();
 		} else if (browserName.contentEquals("IEXPLORER")) {
 			WebDriverManager.chromedriver().setup();
-			driver=(WebDriver) new InternetExplorerDriverManager();
+			driver = (WebDriver) new InternetExplorerDriverManager();
 		}
 
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		return driver;
 	}
+
 	@BeforeMethod
 	public void initialize() throws IOException, InterruptedException {
 
@@ -61,7 +61,8 @@ public class BaseClassSamsara {
 		System.out.println(driver.getTitle());
 
 	}
-	@AfterMethod(alwaysRun=true)
+
+	@AfterMethod(alwaysRun = true)
 	public void close() {
 		driver.close();
 		driver = null;

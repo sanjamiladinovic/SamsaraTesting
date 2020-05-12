@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="samsara.VerifyAdminCanCreateEditDeleteUser">
+      <class name="samsara.webapicourse.DeleteAndPost">
         <methods>
-          <include name="verifyAdminCanDeleteUser" invocation-numbers="0"/>
-          <include name="initialize"/>
-          <include name="close"/>
+          <include name="createRepoReturns201"/>
+          <include name="setup"/>
+          <include name="closeResources"/>
         </methods>
-      </class> <!-- samsara.VerifyAdminCanCreateEditDeleteUser -->
+      </class> <!-- samsara.webapicourse.DeleteAndPost -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
