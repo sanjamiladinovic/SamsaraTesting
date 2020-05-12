@@ -23,7 +23,7 @@ public class DeleteAndPost extends BaseClassAPI {
 	public void deleteIsSuccessful() throws ClientProtocolException, IOException {
 		HttpDelete request = new HttpDelete(
 				"https://api.github.com/repos/sanjamiladinovic/Getting-Started-with-Web-API-Test-Automation-in-Java");
-		request.setHeader(HttpHeaders.AUTHORIZATION, "token " + "c45ce29caf39a6476620c3f5b538f6d4159c657e");// umesto
+		request.setHeader(HttpHeaders.AUTHORIZATION, "token " + "**************");// umesto
 																											// tokena
 																											// trebalo
 																											// bi da
@@ -46,7 +46,7 @@ public class DeleteAndPost extends BaseClassAPI {
 		HttpPost request = new HttpPost("https://api.github.com/user/repos");
 
 		// Set the Basic Auth Header
-		String auth = "sanja.miladinovic@endava.com" + ":" + "87leptiric87";
+		String auth = "sanja.miladinovic@endava.com" + ":" + "************";
 		String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
 		String authHeader = "Basic " + new String(encodedAuth);//nesto nece da radi
 		request.setHeader(HttpHeaders.AUTHORIZATION, encodedAuth);
