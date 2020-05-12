@@ -201,4 +201,20 @@ public class DataProviders {
 	public Object[][] verifyAdminCanDeleteUserData() {
 		return new Object[][] { { "sanja123" } };
 	}
+
+	@DataProvider
+	public Object[][] verifyAdminHeroSearchShowsCorrectTableData() {
+		return new Object[][] { { "Nestvarna" } };
+	}
+
+	@DataProvider
+	public Object[][] verifyAdminSearchUsersInHeroeTableShowsCorrectTableData() {
+		return new Object[][] { { "User", "Admin" } };
+	}
+
+	@DataProvider
+	public Object[][] endpointsAPI() {
+		return new Object[][] { { "/user" }, { "/user/followers" }, { "/notifications" } };
+	}
+
 }

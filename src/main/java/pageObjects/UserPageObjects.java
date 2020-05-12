@@ -44,8 +44,19 @@ public class UserPageObjects {
 	// By deleteButton =
 	// By.xpath("//div[@id='deleteUserModal']/div/div/div[3]/form/button[2]");
 	String deleteButton = "$('#deleteUserModalHolder').find('.btn-danger').click()";
+	By searchField = By.id("search");
+	By searchButton = By.xpath("//div[@id='custom-search-input']/div/span/button");
 
 	// WebElementi metode
+	public WebElement searchButton() {
+
+		return driver.findElement(searchButton);
+	}
+
+	public WebElement searchField() {
+
+		return driver.findElement(searchField);
+	}
 
 	public void adminClickDeleteUserButon() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;

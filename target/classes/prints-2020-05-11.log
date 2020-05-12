@@ -1,0 +1,6 @@
+16:24:23.170 [main] DEBUG samsara.webapi.Get401 - Test 'userReturns401' passes.
+16:26:05.749 [main] DEBUG samsara.webapi.Get401 - Test 'userReturns401' passes.
+16:26:06.105 [main] DEBUG samsara.webapi.Get401 - Test 'userReturns401' passes.
+16:26:07.285 [main] DEBUG samsara.webapi.Get401 - Test 'userReturns401' passes.
+12:29:26.011 [main] DEBUG samsara.webapicourse.WebApiAutomation - Test 'getBaseUrlReturns200' passes.
+12:29:27.161 [main] INFO  samsara.webapicourse.WebApiAutomation - Test 'rateLimitReturns200' passes.

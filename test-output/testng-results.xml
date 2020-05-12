@@ -1,104 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="4" passed="3">
+<testng-results skipped="0" failed="1" ignored="1" total="2" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="78328" started-at="2020-05-04T16:07:16 CEST" finished-at="2020-05-04T16:08:34 CEST">
+  <suite name="Default suite" duration-ms="1158" started-at="2020-05-11T17:07:52 CEST" finished-at="2020-05-11T17:07:54 CEST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="78328" started-at="2020-05-04T16:07:16 CEST" finished-at="2020-05-04T16:08:34 CEST">
-      <class name="samsara.VerifyAdminCanCreateEditDeleteUser">
-        <test-method status="PASS" signature="initialize()[pri:0, instance:samsara.VerifyAdminCanCreateEditDeleteUser@31f9b85e]" name="initialize" is-config="true" duration-ms="13719" started-at="2020-05-04T16:07:16 CEST" finished-at="2020-05-04T16:07:30 CEST">
+    <test name="Default test" duration-ms="1158" started-at="2020-05-11T17:07:52 CEST" finished-at="2020-05-11T17:07:54 CEST">
+      <class name="samsara.webapicourse.DeleteAndPost">
+        <test-method status="PASS" signature="setup()[pri:0, instance:samsara.webapicourse.DeleteAndPost@2bbf4b8b]" name="setup" is-config="true" duration-ms="345" started-at="2020-05-11T17:07:52 CEST" finished-at="2020-05-11T17:07:53 CEST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initialize -->
-        <test-method status="PASS" signature="verifyAdminCanCreateUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:samsara.VerifyAdminCanCreateEditDeleteUser@31f9b85e]" name="verifyAdminCanCreateUser" duration-ms="19431" started-at="2020-05-04T16:07:30 CEST" data-provider="verifyAdminCanCreateUserData" finished-at="2020-05-04T16:07:49 CEST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[sanja123user]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Sanja]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Miladinovic]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[About]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Secret question]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[Secret answer]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[Password1]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="createRepoReturns201()[pri:0, instance:samsara.webapicourse.DeleteAndPost@2bbf4b8b]" name="createRepoReturns201" duration-ms="775" started-at="2020-05-11T17:07:53 CEST" finished-at="2020-05-11T17:07:54 CEST">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [201] but found [401]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [201] but found [401]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:839)
+at org.testng.Assert.assertEquals(Assert.java:849)
+at samsara.webapicourse.DeleteAndPost.createRepoReturns201(DeleteAndPost.java:60)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAdminCanCreateUser -->
-        <test-method status="PASS" signature="verifyAdminCanEditUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:samsara.VerifyAdminCanCreateEditDeleteUser@31f9b85e]" name="verifyAdminCanEditUser" duration-ms="23054" started-at="2020-05-04T16:07:49 CEST" data-provider="verifyAdminCanEditUserData" finished-at="2020-05-04T16:08:12 CEST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[sanja123user]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[sanja123]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Sanja1]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Miladinovic1]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[About1]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- createRepoReturns201 -->
+        <test-method status="PASS" signature="closeResources()[pri:0, instance:samsara.webapicourse.DeleteAndPost@2bbf4b8b]" name="closeResources" is-config="true" duration-ms="2" started-at="2020-05-11T17:07:54 CEST" finished-at="2020-05-11T17:07:54 CEST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAdminCanEditUser -->
-        <test-method status="PASS" signature="verifyAdminCanDeleteUser(java.lang.String)[pri:2, instance:samsara.VerifyAdminCanCreateEditDeleteUser@31f9b85e]" name="verifyAdminCanDeleteUser" duration-ms="21767" started-at="2020-05-04T16:08:12 CEST" data-provider="verifyAdminCanDeleteUserData" finished-at="2020-05-04T16:08:34 CEST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[sanja123]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAdminCanDeleteUser -->
-        <test-method status="PASS" signature="close()[pri:0, instance:samsara.VerifyAdminCanCreateEditDeleteUser@31f9b85e]" name="close" is-config="true" duration-ms="244" started-at="2020-05-04T16:08:34 CEST" finished-at="2020-05-04T16:08:34 CEST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- close -->
-      </class> <!-- samsara.VerifyAdminCanCreateEditDeleteUser -->
+        </test-method> <!-- closeResources -->
+      </class> <!-- samsara.webapicourse.DeleteAndPost -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
